@@ -1,14 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { BooksService } from './app.service';
 import { Book } from './FakeDatabase';
 
 @Controller('books')
 export class BooksController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly bookService: BooksService) {}
 
   @Get()
-  getAllBooks(): string {
-    // return this.appService.getHello();
-    return 'Book';
+  getAllBooks(): Book[]  {
+    return this.bookService.getAllBooks();
   }
 }
